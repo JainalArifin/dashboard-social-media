@@ -1,23 +1,24 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import { SideBar } from "..";
+import Styled from "styled-components";
+import { ROUTES } from "~/configs";
 import { Breadcrumbs } from "@elements";
 
 const drawerWidth = 240;
+
+const DrawerStyle = Styled(Grid)`
+  box-shadow: 0px 5px 10px 0px #a29e9ead;
+  padding-right: 10px;
+  height: 100vh;
+`;
 
 function PageBase(props) {
   const { window } = props;
@@ -27,36 +28,15 @@ function PageBase(props) {
     setMobileOpen(!mobileOpen);
   };
 
-  const drawer = (
-    <div>
-      <Toolbar />
-      <Divider />
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-    </div>
-  );
-
   const container =
     window !== undefined ? () => window().document.body : undefined;
+
+  const routes = [
+    {
+      path: ROUTES.USERS(),
+      breadcrumb: "Userspage",
+    },
+  ];
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -91,7 +71,7 @@ function PageBase(props) {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{
             display: { xs: "block", sm: "none" },
@@ -101,9 +81,9 @@ function PageBase(props) {
             },
           }}
         >
-          {drawer}
+          <SideBar />
         </Drawer>
-        <Drawer
+        <DrawerStyle
           variant="permanent"
           sx={{
             display: { xs: "none", sm: "block" },
@@ -112,10 +92,9 @@ function PageBase(props) {
               width: drawerWidth,
             },
           }}
-          open
         >
-          {drawer}
-        </Drawer>
+          <SideBar />
+        </DrawerStyle>
       </Box>
       <Box
         component="main"
@@ -125,7 +104,8 @@ function PageBase(props) {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
-        {/* <Breadcrumbs /> */}
+        <Breadcrumbs routes={routes} />
+        <Grid>{props.children}</Grid>
         {/* <Toolbar />
         <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
