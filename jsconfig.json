@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"],
+      "@elements/*": ["./src/components/elements/*"],
+      "@fragments/*": ["./src/components/fragments/*"],
+      "@layouts/*": ["./src/components/layouts/*"],
+      "@filters/*": ["./src/components/filters/*"],
+      "@poolData/*": ["./src/components/poolData/*"],
+      "@forms/*": ["./src/components/forms/*"],
+      "@tables/*": ["./src/components/tables/*"],
+      "@inputs/*": ["./src/components/inputs/*"]
+    }
+  }
+}
