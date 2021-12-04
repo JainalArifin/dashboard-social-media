@@ -1,28 +1,13 @@
-import logo from "./logo.svg";
-import "./App.css";
-import Button from "@mui/material/Button";
-import { PageBase } from "@layouts";
+import { ROUTES } from "./configs";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { Users } from "~/pages";
 
 function App() {
   return (
-    <div>
-      <PageBase />
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Button variant="contained">Text</Button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-    </div>
+    <Routes>
+      <Route path="/" element={<Navigate to={ROUTES.USERS()} />} />
+      <Route path={ROUTES.USERS()} element={<Users />} />
+    </Routes>
   );
 }
 
