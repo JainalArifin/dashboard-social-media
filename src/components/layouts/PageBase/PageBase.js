@@ -17,7 +17,7 @@ const drawerWidth = 240;
 const DrawerStyle = Styled(Grid)`
   box-shadow: 0px 5px 10px 0px #a29e9ead;
   padding-right: 10px;
-  height: 100vh;
+  height: 100%;
 `;
 
 function PageBase(props) {
@@ -36,6 +36,10 @@ function PageBase(props) {
       path: ROUTES.USERS(),
       breadcrumb: "Userspage",
     },
+    {
+      path: ROUTES.USERS(),
+      breadcrumb: "Postspage",
+    },
   ];
 
   return (
@@ -44,10 +48,7 @@ function PageBase(props) {
       <Toolbar
         sx={{
           display: { xs: "block", sm: "none" },
-          "& .MuiDrawer-paper": {
-            // boxSizing: "border-box",
-            // width: drawerWidth
-          },
+          "& .MuiDrawer-paper": {},
         }}
       >
         <IconButton

@@ -7,15 +7,11 @@ export function headerData() {
       title: "User",
       url: ROUTES.USERS(),
       icon: AssignmentInd,
-      // subMenu: null,
-      // disabled: false,
     },
-    // {
-    //   title: "Squad",
-    //   url: ROUTES.SQUAD(initialSquad),
-    //   subMenu: null,
-    //   disabled: !initialSquad,
-    //   accessLevel: defaultAccessLevel,
-    // },
+    {
+      title: "Posts",
+      url: ROUTES.POSTS(),
+      icon: AssignmentInd,
+    },
   ];
 }
