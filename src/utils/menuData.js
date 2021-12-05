@@ -6,15 +6,11 @@ const menuData = [
     title: "Users",
     url: ROUTES.USERS(),
     icon: AssignmentInd,
-    // subMenu: null,
-    // disabled: false,
   },
   {
-    title: "jajal",
-    url: "jajal",
+    title: "Posts",
+    url: ROUTES.POSTS(),
     icon: AssignmentInd,
-    // subMenu: null,
-    // disabled: false,
   },
 ];
 

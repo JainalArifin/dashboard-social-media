@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import menuData from "~/utils/menuData";
 import Styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const ListItemStyled = Styled(ListItem)`
   background-color: ${(props) => (props.activeLink ? "#04a4a4ab" : "none")};
@@ -19,6 +20,10 @@ const ListItemStyled = Styled(ListItem)`
   &:hover {
     background-color: #04a4a466;
   }
+`;
+
+const LinkStyled = Styled(Link)`
+  text-decoration: none
 `;
 
 export default function SideBar() {
@@ -35,16 +40,24 @@ export default function SideBar() {
       <Divider />
       <List>
         {menuData.map((item, index) => (
-          <ListItemStyled button key={index} activeLink={activeLink(item.url)}>
-            <ListItemIcon>
-              <item.icon
-                style={{
-                  color: activeLink(item.url) && "white",
-                }}
-              />
-            </ListItemIcon>
-            <ListItemText primary={item.title} />
-          </ListItemStyled>
+          <LinkStyled to={item.url}>
+            <ListItemStyled
+              button
+              key={index}
+              activeLink={activeLink(item.url)}
+              // component={() => <Link to={item.url} />}
+              // to={item.url}
+            >
+              <ListItemIcon>
+                <item.icon
+                  style={{
+                    color: activeLink(item.url) && "white",
+                  }}
+                />
+              </ListItemIcon>
+              <ListItemText primary={item.title} />
+            </ListItemStyled>
+          </LinkStyled>
         ))}
       </List>
     </div>
