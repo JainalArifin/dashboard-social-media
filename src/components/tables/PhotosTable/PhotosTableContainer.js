@@ -1,6 +1,7 @@
 import PhotosTable from "./PhotosTable";
 
 export default function PhotosTableContainer({
+  actions: { getPhotoDetail },
   sideDrawerActions: { openSideDrawer },
   queryData,
   loading,
@@ -17,6 +18,7 @@ export default function PhotosTableContainer({
   return (
     <>
       <PhotosTable
+        getPhotoDetail={getPhotoDetail}
         openSideDrawer={openSideDrawer}
         isLoading={loading}
         isError={error}
