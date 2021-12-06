@@ -3,5 +3,6 @@ export default {
   HOME: () => "/",
   USERS: () => `/users`,
   POSTS: () => `/posts`,
+  ALBUMS: () => `/albums`,
   NOT_FOUND: () => `/404`,
 };
