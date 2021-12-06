@@ -4,5 +4,6 @@ export default {
   USERS: () => `/users`,
   POSTS: () => `/posts`,
   ALBUMS: () => `/albums`,
+  PHOTOS: () => `/photos`,
   NOT_FOUND: () => `/404`,
 };

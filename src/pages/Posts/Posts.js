@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { PageBase } from "@layouts";
 import { PostsTable } from "@tables";
-import { PostsFilter } from "@filters";
+import { UsersFilter } from "@filters";
 import { Button, Grid, Drawer } from "@mui/material";
 import { INITIALIZERS } from "~/configs";
 import useAxios from "axios-hooks";
@@ -20,8 +20,9 @@ export default function Posts({
   });
 
   const handleChangeLabel = (event) => {
-    setName(event.target.value);
-    refetch();
+    setName(event.target.value, () => {
+      refetch();
+    });
   };
 
   function handleOpenFormClick() {
@@ -36,7 +37,7 @@ export default function Posts({
         <Grid item style={{ marginBottom: 10 }}>
           <Grid container direction="row" justifyContent="space-between">
             <Grid item>
-              <PostsFilter
+              <UsersFilter
                 label={name}
                 handleChangeLabel={handleChangeLabel}
                 setLabel={setName}
