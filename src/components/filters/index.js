@@ -1,1 +1,2 @@
-export { default as PostsFilter } from "./PostsFilter";
+export { default as UsersFilter } from "./UsersFilter";
+export { default as AlbumsFilter } from "./AlbumsFilter";

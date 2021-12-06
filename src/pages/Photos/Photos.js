@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { PageBase } from "@layouts";
-import { PostsTable } from "@tables";
-import { UsersFilter } from "@filters";
-import { Button, Grid, Drawer } from "@mui/material";
+import { AlbumsFilter } from "@filters";
+import { Grid, Drawer } from "@mui/material";
 import { INITIALIZERS } from "~/configs";
 import useAxios from "axios-hooks";
 import { PostForm } from "@forms";
+import { PhotosTable } from "@tables";
 
-export default function Posts({
+export default function Photos({
   actions: { getPostDetail },
   sideDrawerActions: { openSideDrawer, closeSideDrawer },
   sideDrawerData,
@@ -15,43 +15,38 @@ export default function Posts({
   const [name, setName] = useState("");
 
   const [{ data: queryData, loading, error }, refetch] = useAxios({
-    url: `${INITIALIZERS.API_JSON_PLACEHOLDER}/posts`,
-    params: { userId: name === "" ? null : name },
+    url: `${INITIALIZERS.API_JSON_PLACEHOLDER}/photos`,
+    params: { albumId: name === "" ? null : name },
   });
 
-  const handleChangeLabel = (event) => {
-    setName(event.target.value, () => {
+  const handleChangeLabel = async (event) => {
+    await setName(event.target.value, () => {
       refetch();
     });
   };
 
-  function handleOpenFormClick() {
-    getPostDetail({});
-    openSideDrawer("PostForm");
-  }
-
   return (
     <PageBase>
-      <h2>List of Posts</h2>
+      <h2>List of Photos</h2>
       <Grid container direction="column">
         <Grid item style={{ marginBottom: 10 }}>
           <Grid container direction="row" justifyContent="space-between">
             <Grid item>
-              <UsersFilter
+              <AlbumsFilter
                 label={name}
                 handleChangeLabel={handleChangeLabel}
                 setLabel={setName}
               />
             </Grid>
             <Grid item>
-              <Button variant="contained" onClick={handleOpenFormClick}>
+              {/* <Button variant="contained" onClick={handleOpenFormClick}>
                 Add Post
-              </Button>
+              </Button> */}
             </Grid>
           </Grid>
         </Grid>
         <Grid item>
-          <PostsTable
+          <PhotosTable
             loading={loading}
             error={error}
             queryData={queryData}

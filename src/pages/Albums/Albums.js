@@ -1,17 +1,12 @@
 import { useState, useEffect } from "react";
 import { PageBase } from "@layouts";
-import { PostsFilter } from "@filters";
-import { Button, Grid, Drawer } from "@mui/material";
+import { UsersFilter } from "@filters";
+import { Grid } from "@mui/material";
 import { INITIALIZERS } from "~/configs";
 import useAxios from "axios-hooks";
-import { PostForm } from "@forms";
 import { AlbumsTable } from "@tables";
 
-export default function Albums({
-  actions: { getPostDetail },
-  sideDrawerActions: { openSideDrawer, closeSideDrawer },
-  sideDrawerData,
-}) {
+export default function Albums() {
   const [name, setName] = useState("");
 
   const [{ data: queryData, loading, error }, refetch] = useAxios({
@@ -20,14 +15,10 @@ export default function Albums({
   });
 
   const handleChangeLabel = (event) => {
-    setName(event.target.value);
-    refetch();
+    setName(event.target.value, () => {
+      refetch();
+    });
   };
-
-  function handleOpenFormClick() {
-    getPostDetail({});
-    openSideDrawer("PostForm");
-  }
 
   return (
     <PageBase>
@@ -36,16 +27,11 @@ export default function Albums({
         <Grid item style={{ marginBottom: 10 }}>
           <Grid container direction="row" justifyContent="space-between">
             <Grid item>
-              <PostsFilter
+              <UsersFilter
                 label={name}
                 handleChangeLabel={handleChangeLabel}
                 setLabel={setName}
               />
-            </Grid>
-            <Grid item>
-              {/* <Button variant="contained" onClick={handleOpenFormClick}>
-                Add Post
-              </Button> */}
             </Grid>
           </Grid>
         </Grid>
@@ -58,18 +44,6 @@ export default function Albums({
           />
         </Grid>
       </Grid>
-      <Drawer
-        open={sideDrawerData.get("isOpen")}
-        onClose={closeSideDrawer}
-        anchor="right"
-        style={{
-          padding: 20,
-        }}
-      >
-        {sideDrawerData.get("componentName") === "PostForm" && (
-          <PostForm refetch={refetch} />
-        )}
-      </Drawer>
     </PageBase>
   );
 }

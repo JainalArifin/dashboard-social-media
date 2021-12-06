@@ -12,9 +12,9 @@ import useAxios from "axios-hooks";
 import { INITIALIZERS } from "~/configs";
 import { fromJS } from "immutable";
 
-export default function PostsFilter({ label, setLabel, handleChangeLabel }) {
+export default function AlbumsFilter({ label, setLabel, handleChangeLabel }) {
   const [{ data: queryData, loading, error }] = useAxios(
-    `${INITIALIZERS.API_JSON_PLACEHOLDER}/users`
+    `${INITIALIZERS.API_JSON_PLACEHOLDER}/albums`
   );
 
   let responseData = [];
@@ -23,19 +23,21 @@ export default function PostsFilter({ label, setLabel, handleChangeLabel }) {
     responseData = queryData;
   }
 
-  const users = fromJS(responseData);
+  const albums = fromJS(responseData);
 
   return (
     <Grid container direction="row">
       <Grid item marginRight={2}>
         <Box sx={{ width: 200 }}>
           <FormControl fullWidth>
-            <InputLabel id="label-filter-by-users">Filter By Users</InputLabel>
+            <InputLabel id="label-filter-by-albums">
+              Filter By Albums
+            </InputLabel>
             <Select
-              labelId="filter-by-users"
-              id="filter-by-users"
+              labelId="filter-by-albums"
+              id="filter-by-albums"
               value={label}
-              label="Filter By Users"
+              label="Filter By albums"
               // onChange={handleChange}
               onChange={handleChangeLabel}
             >
@@ -48,13 +50,15 @@ export default function PostsFilter({ label, setLabel, handleChangeLabel }) {
                   return <MenuItem>error</MenuItem>;
                 }
 
-                if (users) {
-                  if (users.isEmpty()) {
+                if (albums) {
+                  if (albums.isEmpty()) {
                     return <MenuItem>no data</MenuItem>;
                   }
-                  return users.map((user, index) => (
+                  return albums.map((user, index) => (
                     <MenuItem value={user.get("id")} key={index}>
-                      {user.get("name")}
+                      {user.get("title").length >= 30
+                        ? `${user.get("title").substring(0, 30)} ...`
+                        : user.get("title")}
                     </MenuItem>
                   ));
                 }

@@ -1,5 +1,10 @@
 import { ROUTES } from "~/configs";
-import { AssignmentInd, Article, AddPhotoAlternate } from "@mui/icons-material";
+import {
+  AssignmentInd,
+  Article,
+  AddPhotoAlternate,
+  AddAPhoto,
+} from "@mui/icons-material";
 
 const menuData = [
   {
@@ -16,6 +21,11 @@ const menuData = [
     title: "Albums",
     url: ROUTES.ALBUMS(),
     icon: AddPhotoAlternate,
+  },
+  {
+    title: "Photos",
+    url: ROUTES.PHOTOS(),
+    icon: AddAPhoto,
   },
 ];
 
