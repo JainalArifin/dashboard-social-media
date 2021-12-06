@@ -2,6 +2,7 @@ import * as React from "react";
 import TextField from "@mui/material/TextField";
 
 export default function InputText({
+  id,
   label,
   errorMessage,
   isError = false,
@@ -13,7 +14,6 @@ export default function InputText({
       <TextField
         style={{ width: width }}
         helperText={errorMessage}
-        id="input-text"
         label={label}
         color={isError && "error"}
         error={isError}

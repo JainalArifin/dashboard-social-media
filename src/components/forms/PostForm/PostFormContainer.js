@@ -31,6 +31,10 @@ export default function PostFormContainer({
     { manual: true }
   );
 
+  const [{ data: dataUser, loading: loadingUser, error: errorUser }] = useAxios(
+    `${INITIALIZERS.API_JSON_PLACEHOLDER}/users`
+  );
+
   const handleSubmit = async (
     payload,
     { setSubmitting, resetForm, setErrors }
@@ -77,6 +81,9 @@ export default function PostFormContainer({
       handleSubmit={handleSubmit}
       isLoading={loading || loadingEdit}
       post={post}
+      dataUser={dataUser}
+      loadingUser={loadingUser}
+      errorUser={errorUser}
     />
   );
 }

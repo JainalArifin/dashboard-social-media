@@ -31,6 +31,10 @@ export default function CommentFormContainer({
     { manual: true }
   );
 
+  const [{ data: dataPost, loading: loadingPost, error: errorPost }] = useAxios(
+    `${INITIALIZERS.API_JSON_PLACEHOLDER}/posts`
+  );
+
   const handleSubmit = async (
     payload,
     { setSubmitting, resetForm, setErrors }
@@ -77,6 +81,9 @@ export default function CommentFormContainer({
       handleSubmit={handleSubmit}
       isLoading={loading || loadingEdit}
       comment={comment}
+      dataPost={dataPost}
+      loadingPost={loadingPost}
+      errorPost={errorPost}
     />
   );
 }

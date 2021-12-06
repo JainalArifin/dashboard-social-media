@@ -21,17 +21,19 @@ function CommentForm({
   handleChange,
   handleBlur,
   isLoading,
+  dataPost,
+  loadingPost,
+  errorPost,
 }) {
-  const [{ data, loading, error }] = useAxios(
-    `${INITIALIZERS.API_JSON_PLACEHOLDER}/posts`
-  );
-
   return (
     <form style={{ padding: 20 }} onSubmit={handleSubmit}>
       <h2>{values.id ? "Edit Comment" : "Add New Comment"}</h2>
       <Grid container direction="row">
         <Grid item marginRight={2}>
           <InputText
+            inputProps={{
+              "data-testid": "input-text-name",
+            }}
             label="Name"
             name="name"
             onChange={handleChange("name")}
@@ -43,6 +45,9 @@ function CommentForm({
         </Grid>
         <Grid item marginRight={2}>
           <InputText
+            inputProps={{
+              "data-testid": "input-text-email",
+            }}
             label="Email"
             name="email"
             onChange={handleChange("email")}
@@ -55,12 +60,15 @@ function CommentForm({
       </Grid>
       <Grid container marginTop={2}>
         <InputSelect
+          inputProps={{
+            "data-testid": "input-select-post-id",
+          }}
           label="Post"
           name="postId"
           value={values.postId}
-          data={data}
-          loading={loading}
-          error={error}
+          data={dataPost}
+          loading={loadingPost}
+          error={errorPost}
           optionKey="title"
           isError={errors.postId}
           helperText={errors.postId}
@@ -70,6 +78,9 @@ function CommentForm({
       </Grid>
       <Grid container marginTop={2}>
         <InputTextArea
+          inputProps={{
+            "data-testid": "input-text-area-body",
+          }}
           label="Body"
           width="100%"
           name="body"
@@ -91,6 +102,7 @@ function CommentForm({
               variant="contained"
               disabled={!isValid || !dirty}
               type="submit"
+              data-testid="button-save"
             >
               Save
             </Button>
