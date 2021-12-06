@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { PageBase } from "@layouts";
 import { AlbumsFilter } from "@filters";
-import { Grid } from "@mui/material";
+import { Grid, Drawer } from "@mui/material";
 import { INITIALIZERS } from "~/configs";
 import useAxios from "axios-hooks";
 import { PhotosTable } from "@tables";
+import { PhotoDetail } from "@fragments";
 
-export default function Photos() {
+export default function Photos({
+  sideDrawerActions: { closeSideDrawer },
+  sideDrawerData,
+}) {
   const [name, setName] = useState("");
 
   const [{ data: queryData, loading, error }, refetch] = useAxios({
@@ -49,6 +53,18 @@ export default function Photos() {
           />
         </Grid>
       </Grid>
+      <Drawer
+        open={sideDrawerData.get("isOpen")}
+        onClose={closeSideDrawer}
+        anchor="right"
+        style={{
+          padding: 20,
+        }}
+      >
+        {sideDrawerData.get("componentName") === "PhotoDetail" && (
+          <PhotoDetail />
+        )}
+      </Drawer>
     </PageBase>
   );
 }
