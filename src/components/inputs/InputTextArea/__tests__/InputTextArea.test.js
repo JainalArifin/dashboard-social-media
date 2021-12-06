@@ -1,14 +1,14 @@
 import React from "react";
 import "jest-styled-components";
-import InputText from "../InputText";
+import InputTextArea from "../InputTextArea";
 import { render, fireEvent } from "@testing-library/react";
 
 describe("unit testing input text", () => {
-  it("change value input text", () => {
+  it("change value input text area", () => {
     const { getByTestId } = render(
-      <InputText
+      <InputTextArea
         inputProps={{
-          "data-testid": "input-text-title",
+          "data-testid": "input-text-area-body",
         }}
         name="title"
         label="Title"
@@ -18,10 +18,10 @@ describe("unit testing input text", () => {
       />
     );
 
-    const inputTitle = getByTestId("input-text-title");
-    fireEvent.change(inputTitle, {
-      target: { value: "bismillah title jalan" },
+    const inputBody = getByTestId("input-text-area-body");
+    fireEvent.change(inputBody, {
+      target: { value: "bismillah body jalan" },
     });
-    expect(inputTitle.value).toBe("bismillah title jalan");
+    expect(inputBody.value).toBe("bismillah body jalan");
   });
 });

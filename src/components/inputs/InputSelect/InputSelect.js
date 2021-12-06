@@ -16,47 +16,9 @@ export default function InputSelect({
   isError,
   ...rest
 }) {
-  // return (
-  //   <FormControl style={{ width: width }}>
-  //     <InputLabel id={`label-select-${kebabCase(label)}`}>{label}</InputLabel>
-  //     <Select
-  //       labelId={`input-select-${kebabCase(label)}`}
-  //       id={`input-select-${kebabCase(label)}`}
-  //       value={value}
-  //       label={label}
-  //       onChange={handleChangeLabel}
-  //       helper
-  //       {...rest}
-  //     >
-  //       {(() => {
-  //         if (loading) {
-  //           return <MenuItem>loading...</MenuItem>;
-  //         }
-
-  //         if (error) {
-  //           return <MenuItem>error</MenuItem>;
-  //         }
-
-  //         if (data) {
-  //           if (data.length === 0) {
-  //             return <MenuItem>no data</MenuItem>;
-  //           }
-  //           return data.map((item, index) => (
-  //             <MenuItem value={item.id} key={index}>
-  //               {item[`${optionKey}`]}
-  //             </MenuItem>
-  //           ));
-  //         }
-
-  //         return null;
-  //       })()}
-  //     </Select>
-  //   </FormControl>
-  // );
   return (
     <TextField
       style={{ width: width }}
-      id="outlined-select-currency"
       select
       label={label}
       value={value}
