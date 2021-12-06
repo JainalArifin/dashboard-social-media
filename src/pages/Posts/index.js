@@ -3,7 +3,6 @@ import Posts from "./Posts";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actions from "~/redux/post/action";
-import * as actionPostsAll from "~/redux/posts/action";
 import * as sideDrawerActions from "~/redux/sideDrawer/action";
 
 const mapStateToProps = (state) => {

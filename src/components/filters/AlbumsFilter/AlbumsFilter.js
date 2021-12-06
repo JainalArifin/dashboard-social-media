@@ -54,11 +54,11 @@ export default function AlbumsFilter({ label, setLabel, handleChangeLabel }) {
                   if (albums.isEmpty()) {
                     return <MenuItem>no data</MenuItem>;
                   }
-                  return albums.map((user, index) => (
-                    <MenuItem value={user.get("id")} key={index}>
-                      {user.get("title").length >= 30
-                        ? `${user.get("title").substring(0, 30)} ...`
-                        : user.get("title")}
+                  return albums.map((album, index) => (
+                    <MenuItem value={album.get("id")} key={index}>
+                      {album.get("title").length >= 30
+                        ? `${album.get("title").substring(0, 30)} ...`
+                        : album.get("title")}
                     </MenuItem>
                   ));
                 }

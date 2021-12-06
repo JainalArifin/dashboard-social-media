@@ -58,7 +58,7 @@ export default function InputSelect({
       style={{ width: width }}
       id="outlined-select-currency"
       select
-      label="Select"
+      label={label}
       value={value}
       onChange={handleChange}
       helperText={errorMessage}
@@ -81,7 +81,9 @@ export default function InputSelect({
           }
           return data.map((item, index) => (
             <MenuItem value={item.id} key={index}>
-              {item[`${optionKey}`]}
+              {item[`${optionKey}`].length >= 30
+                ? `${item[`${optionKey}`].substring(0, 30)}...`
+                : item[`${optionKey}`]}
             </MenuItem>
           ));
         }

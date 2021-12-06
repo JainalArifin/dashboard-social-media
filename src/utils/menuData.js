@@ -4,6 +4,7 @@ import {
   Article,
   AddPhotoAlternate,
   AddAPhoto,
+  Comment,
 } from "@mui/icons-material";
 
 const menuData = [
@@ -26,6 +27,11 @@ const menuData = [
     title: "Photos",
     url: ROUTES.PHOTOS(),
     icon: AddAPhoto,
+  },
+  {
+    title: "Comments",
+    url: ROUTES.COMMENTS(),
+    icon: Comment,
   },
 ];
 

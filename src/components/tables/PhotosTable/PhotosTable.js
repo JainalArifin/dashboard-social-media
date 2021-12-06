@@ -7,10 +7,12 @@ import {
   TableHead,
   TableRow,
   TablePagination,
+  Button,
 } from "@mui/material";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import Paper from "@mui/material/Paper";
 import { Fetching, ErrorTable, NoData } from "@elements";
+import Visibility from "@mui/icons-material/Visibility";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -32,7 +34,13 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export default function PhotosTable({ isLoading, isError, photos }) {
+export default function PhotosTable({
+  getPhotoDetail,
+  openSideDrawer,
+  isLoading,
+  isError,
+  photos,
+}) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -55,6 +63,11 @@ export default function PhotosTable({ isLoading, isError, photos }) {
     setPage(0);
   };
 
+  function handleOpenFormClick(photo) {
+    getPhotoDetail(photo);
+    openSideDrawer("PhotoDetail");
+  }
+
   return (
     <>
       <TableContainer component={Paper}>
@@ -63,6 +76,7 @@ export default function PhotosTable({ isLoading, isError, photos }) {
             <TableRow>
               <StyledTableCell>Title</StyledTableCell>
               <StyledTableCell>Photo</StyledTableCell>
+              <StyledTableCell>Action</StyledTableCell>
             </TableRow>
           </TableHead>
           {(() => {
@@ -92,7 +106,20 @@ export default function PhotosTable({ isLoading, isError, photos }) {
                               srcSet={`${photo.thumbnailUrl}?w=100&h=100&fit=crop&auto=format&dpr=2 2x`}
                               alt={photo.title}
                               loading="lazy"
+                              style={{
+                                height: 60,
+                                width: 60,
+                              }}
                             />
+                          </StyledTableCell>
+                          <StyledTableCell>
+                            <Button
+                              variant="outlined"
+                              startIcon={<Visibility />}
+                              onClick={() => handleOpenFormClick(photo)}
+                            >
+                              View Detail
+                            </Button>
                           </StyledTableCell>
                         </StyledTableRow>
                       );
