@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PostForm from "./PostForm";
 import useAxios from "axios-hooks";
 import { INITIALIZERS } from "~/configs";

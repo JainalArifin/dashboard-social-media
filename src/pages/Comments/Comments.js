@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { PageBase } from "@layouts";
 import { CommentsTable } from "@tables";
 import { PostsFilter } from "@filters";

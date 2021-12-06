@@ -9,8 +9,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Grid from "@mui/material/Grid";
 import { SideBar } from "..";
 import Styled from "styled-components";
-import { ROUTES } from "~/configs";
-import { Breadcrumbs } from "@elements";
+// import { ROUTES } from "~/configs";
 
 const drawerWidth = 240;
 
@@ -31,16 +30,16 @@ function PageBase(props) {
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
-  const routes = [
-    {
-      path: ROUTES.USERS(),
-      breadcrumb: "Userspage",
-    },
-    {
-      path: ROUTES.USERS(),
-      breadcrumb: "Postspage",
-    },
-  ];
+  // const routes = [
+  //   {
+  //     path: ROUTES.USERS(),
+  //     breadcrumb: "Userspage",
+  //   },
+  //   {
+  //     path: ROUTES.USERS(),
+  //     breadcrumb: "Postspage",
+  //   },
+  // ];
 
   return (
     <Box sx={{ display: "flex" }}>

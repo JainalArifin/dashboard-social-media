@@ -4,9 +4,9 @@ const alias = require("./tools/alias").alias;
 module.exports = {
   mode: "development",
   // Adding Server
-  devServer: {
-    port: 8001,
-  },
+  // devServer: {
+  //   port: 8001,
+  // },
   plugins: [
     {
       plugin: CracoAlias,
