@@ -1,7 +1,7 @@
 import PhotosTableContainer from "./PhotosTableContainer";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as actions from "~/redux/post/action";
+import * as actions from "~/redux/photo/action";
 import * as sideDrawerActions from "~/redux/sideDrawer/action";
 import * as snackbarActions from "~/redux/snackbar/action";
 

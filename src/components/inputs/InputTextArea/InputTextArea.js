@@ -13,7 +13,7 @@ export default function InputTextArea({
       <TextField
         style={{ width: width }}
         helperText={errorMessage}
-        id="input-text-area"
+        id="input-text"
         multiline
         rows={4}
         label={label}

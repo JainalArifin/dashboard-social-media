@@ -1,6 +1,7 @@
 //color
 export const COLOR_PRIMARY = "#289f97";
 export const COLOR_PRIMARY_LIGHT = "#e4f7f6";
+export const COLOR_PRIMARY_LIGHT2 = "#04a4a466";
 export const COLOR_ERROR = "#f55151";
 export const COLOR_ERROR_LIGHT = "#fab7b7";
 export const COLOR_ON_PROCESS = "#229bd8";

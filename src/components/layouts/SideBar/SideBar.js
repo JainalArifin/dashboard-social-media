@@ -6,19 +6,28 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Typography,
 } from "@mui/material";
 import menuData from "~/utils/menuData";
 import Styled from "styled-components";
 import { Link } from "react-router-dom";
+import {
+  COLOR_PRIMARY,
+  COLOR_PRIMARY_LIGHT,
+  COLOR_PRIMARY_LIGHT2,
+  COLOR_ERROR,
+} from "~/styles";
 
 const ListItemStyled = Styled(ListItem)`
-  background-color: ${(props) => (props.activeLink ? "#04a4a4ab" : "none")};
+  background-color: ${(props) =>
+    props.activeLink ? `${COLOR_PRIMARY_LIGHT2}` : "none"};
   border-left: ${(props) =>
-    props.activeLink ? "6px solid #04A4A4 !important" : "none"} ;
+    props.activeLink ? `6px solid ${COLOR_PRIMARY} !important` : "none"} ;
   border-radius: 0 20px 20px 0 ;
   color: ${(props) => (props.activeLink ? "white" : "black")};
   &:hover {
-    background-color: #04a4a466;
+     background-color: ${(props) =>
+       props.activeLink ? `${COLOR_PRIMARY_LIGHT2}` : `${COLOR_PRIMARY_LIGHT}`};
   }
 `;
 
@@ -36,7 +45,13 @@ export default function SideBar() {
   };
   return (
     <div>
-      <Toolbar />
+      <Toolbar>
+        <h2 style={{ color: COLOR_ERROR, fontWeight: "bold" }}>
+          So.<span style={{ color: COLOR_PRIMARY }}>media</span>
+        </h2>
+      </Toolbar>
+      {/* <Typography variant="h6">jajal</Typography> */}
+      {/* <h2>So.Media</h2> */}
       <Divider />
       <List>
         {menuData.map((item, index) => (
@@ -45,8 +60,6 @@ export default function SideBar() {
               button
               key={index}
               activeLink={activeLink(item.url)}
-              // component={() => <Link to={item.url} />}
-              // to={item.url}
             >
               <ListItemIcon>
                 <item.icon
