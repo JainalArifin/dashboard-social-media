@@ -1,17 +1,12 @@
 import { useState } from "react";
 import { PageBase } from "@layouts";
 import { AlbumsFilter } from "@filters";
-import { Grid, Drawer } from "@mui/material";
+import { Grid } from "@mui/material";
 import { INITIALIZERS } from "~/configs";
 import useAxios from "axios-hooks";
-import { PostForm } from "@forms";
 import { PhotosTable } from "@tables";
 
-export default function Photos({
-  actions: { getPostDetail },
-  sideDrawerActions: { openSideDrawer, closeSideDrawer },
-  sideDrawerData,
-}) {
+export default function Photos() {
   const [name, setName] = useState("");
 
   const [{ data: queryData, loading, error }, refetch] = useAxios({
@@ -54,18 +49,6 @@ export default function Photos({
           />
         </Grid>
       </Grid>
-      <Drawer
-        open={sideDrawerData.get("isOpen")}
-        onClose={closeSideDrawer}
-        anchor="right"
-        style={{
-          padding: 20,
-        }}
-      >
-        {sideDrawerData.get("componentName") === "PostForm" && (
-          <PostForm refetch={refetch} />
-        )}
-      </Drawer>
     </PageBase>
   );
 }
