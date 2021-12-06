@@ -6,7 +6,6 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Typography,
 } from "@mui/material";
 import menuData from "~/utils/menuData";
 import Styled from "styled-components";

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { PageBase } from "@layouts";
 import { PostsTable } from "@tables";
 import { UsersFilter } from "@filters";
