@@ -1,8 +1,7 @@
 import { forwardRef } from "react";
 import { ROUTES } from "~/configs";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { Posts, Users } from "~/pages";
-import { Map } from "immutable";
+import { Posts, Users, Albums } from "~/pages";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 
@@ -17,6 +16,7 @@ function App({ snackbar, snackbarActions: { openSnackbar } }) {
         <Route path="/" element={<Navigate to={ROUTES.USERS()} />} />
         <Route path={ROUTES.USERS()} element={<Users />} />
         <Route path={ROUTES.POSTS()} element={<Posts />} />
+        <Route path={ROUTES.ALBUMS()} element={<Albums />} />
       </Routes>
       <Snackbar open={snackbar.get("isOpen")} autoHideDuration={3000}>
         <Alert

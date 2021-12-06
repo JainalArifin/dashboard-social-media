@@ -17,7 +17,7 @@ const drawerWidth = 240;
 const DrawerStyle = Styled(Grid)`
   box-shadow: 0px 5px 10px 0px #a29e9ead;
   padding-right: 10px;
-  height: 100%;
+  height: 100vh;
 `;
 
 function PageBase(props) {
